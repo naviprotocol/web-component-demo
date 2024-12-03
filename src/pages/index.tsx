@@ -4,10 +4,8 @@ import {
   ConnectModal,
   useSignTransaction,
 } from "@mysten/dapp-kit";
-import { SwapPanelClient } from "navi-web-component";
 import { useState, useEffect } from "react";
-
-const swapPanelClient = SwapPanelClient.getInstance();
+import { swapPanelClient } from "@/services/swap";
 
 export default function Home() {
   const account = useCurrentAccount();
