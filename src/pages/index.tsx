@@ -7,11 +7,12 @@ import {
 import { SwapPanelClient } from "navi-web-component";
 import { useState, useEffect } from "react";
 
-const swapPanelClient = new SwapPanelClient();
+const swapPanelClient = SwapPanelClient.getInstance();
 
 export default function Home() {
   const account = useCurrentAccount();
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     if (account) {
@@ -95,6 +96,16 @@ export default function Home() {
             }}
           >
             Set Swap To Token
+          </div>
+          <div
+            className="rounded-full cursor-pointer border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+            onClick={() => {
+              swapPanelClient.changeTheme(theme === "dark" ? "light" : "dark");
+              setTheme(theme === "dark" ? "light" : "dark");
+              document.documentElement.classList.toggle("dark");
+            }}
+          >
+            Toggle Theme ({theme})
           </div>
         </div>
       </main>
