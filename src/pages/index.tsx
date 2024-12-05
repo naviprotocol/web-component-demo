@@ -4,13 +4,16 @@ import {
   ConnectModal,
   useSignTransaction,
 } from "@mysten/dapp-kit";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { swapPanelClient } from "@/services/swap";
+import { Input, Button } from "@nextui-org/react";
 
 export default function Home() {
   const account = useCurrentAccount();
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
+  const [fee, setFee] = useState("");
+  const [receiverAddress, setReceiverAddress] = useState("");
 
   useEffect(() => {
     if (account) {
@@ -44,11 +47,21 @@ export default function Home() {
     };
   }, [signTransaction]);
 
+  const handleSaveServiceFee = useCallback(() => {
+    const feeValue = parseFloat(fee);
+    if (!isNaN(feeValue) && feeValue >= 0 && receiverAddress) {
+      swapPanelClient.setServiceFee({
+        fee: feeValue / 100,
+        receiverAddress,
+      });
+    } else {
+      swapPanelClient.setServiceFee(null);
+    }
+  }, [fee, receiverAddress]);
+
   return (
-    <div
-      className={`grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <>
+      <main className="flex gap-8 pt-20 pl-20 h-screen">
         <div className="flex gap-4 items-center flex-col">
           <ConnectButton />
           <div
@@ -106,12 +119,50 @@ export default function Home() {
             Toggle Theme ({theme})
           </div>
         </div>
+        <div className="flex gap-4 items-center flex-col w-[250px]">
+          <div className="flex flex-col gap-2">
+            <div className="font-semibold">Service Fee</div>
+            <Input
+              max={1}
+              type="text"
+              label="Fee"
+              color="default"
+              endContent="%"
+              value={fee}
+              onChange={(e) => {
+                let value = e.target.value.replace(/[^0-9.]/g, "");
+                const fee = parseFloat(value);
+                if (!isNaN(fee) && fee > 1) {
+                  value = "1";
+                }
+                setFee(value);
+              }}
+            />
+            <Input
+              max={1}
+              type="text"
+              label="Receiver Address"
+              color="default"
+              value={receiverAddress}
+              onChange={(e) =>
+                setReceiverAddress(e.target.value.replace(/[^0-9a-zA-Z]/g, ""))
+              }
+            />
+            <Button
+              color="primary"
+              className="w-full"
+              onClick={handleSaveServiceFee}
+            >
+              Save
+            </Button>
+          </div>
+        </div>
       </main>
       <ConnectModal
         trigger={<></>}
         open={open}
         onOpenChange={(isOpen) => setOpen(isOpen)}
       />
-    </div>
+    </>
   );
 }
