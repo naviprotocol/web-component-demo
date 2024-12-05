@@ -27,8 +27,8 @@ importers:
         specifier: ^0.0.11
         version: 0.0.11(typescript@5.6.3)
       navi-web-component-dev:
-        specifier: 0.0.13-7
-        version: 0.0.13-7(typescript@5.6.3)
+        specifier: 0.0.13-8
+        version: 0.0.13-8(typescript@5.6.3)
       next:
         specifier: 15.0.3
         version: 15.0.3(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -2807,8 +2807,8 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  navi-web-component-dev@0.0.13-7:
-    resolution: {integrity: sha512-q5x0rGe6a5aJmiFkCSPixIVQMyIE49RR7n4Cron/SjSrcJMfIwRoZVKOU3rBtnqrKMD6U4PE2GDmmz5zhgKS+w==}
+  navi-web-component-dev@0.0.13-8:
+    resolution: {integrity: sha512-U+ji03lEULGOUikjDuq0toKMYY49VNMYANsIRHkDZiJqz2pg+ittb6MyY9LUhiLE0JkPB3GVT8ol7UKi4j4alw==}
 
   navi-web-component@0.0.11:
     resolution: {integrity: sha512-IxRTQgWM+y1KdqL/kRtAY7GDu6X1a0jizuzkh7B6sSk9IvBkS/HcCUySYqKAehp8+pnw4qCIhnN8epyxvSz5ig==}
@@ -7206,7 +7206,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  navi-web-component-dev@0.0.13-7(typescript@5.6.3):
+  navi-web-component-dev@0.0.13-8(typescript@5.6.3):
     dependencies:
       '@mysten/sui': 1.14.3(typescript@5.6.3)
       lit: 3.2.1
