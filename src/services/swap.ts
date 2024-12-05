@@ -1,3 +1,3 @@
-import { SwapPanelClient } from "navi-web-component";
+import { SwapPanelClient } from "navi-web-component-dev";
 
 export const swapPanelClient = SwapPanelClient.getInstance();
