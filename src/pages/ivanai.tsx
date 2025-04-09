@@ -4,16 +4,12 @@ import {
   ConnectModal,
   useSignTransaction,
 } from "@mysten/dapp-kit";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { ivanAiClient } from "@/services/ivan";
-import { Input, Button } from "@nextui-org/react";
 
 export default function Home() {
   const account = useCurrentAccount();
   const [open, setOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
-  const [fee, setFee] = useState("");
-  const [receiverAddress, setReceiverAddress] = useState("");
 
   useEffect(() => {
     if (account) {
