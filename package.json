@@ -14,7 +14,7 @@
     "@nextui-org/react": "^2.4.8",
     "@tanstack/react-query": "^5.60.2",
     "framer-motion": "^11.13.1",
-    "navi-web-component": "0.0.18-dev.2",
+    "navi-web-component": "0.0.18-dev.3",
     "next": "15.2.4",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"
