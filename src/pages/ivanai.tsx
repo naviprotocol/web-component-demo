@@ -42,7 +42,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="flex gap-8 pt-20 pl-20 h-screen">
+      <main className="flex gap-8 pt-20 pl-20 h-screen bg-white">
         <div className="flex gap-4 items-center flex-col">
           <ConnectButton />
         </div>
